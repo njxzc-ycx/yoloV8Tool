@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>ModelValidationForm</class>
+    <widget class="QWidget" name="ModelValidationForm">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1200</width>
+                <height>800</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Model Validation</string>
+        </property>
+        <layout class="QVBoxLayout" name="mainLayout">
+            <item>
+                <widget class="QSplitter" name="splitter">
+                    <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                    </property>
+
+                    <!-- Left Side: Image Display Area -->
+                    <widget class="QWidget" name="leftWidget">
+                        <layout class="QVBoxLayout" name="leftLayout">
+                            <!-- Image Display Area -->
+                            <item>
+                                <widget class="QLabel" name="imageDisplayLabel">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>800</width>
+                                            <height>600</height>
+                                        </size>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignCenter</set>
+                                    </property>
+                                    <property name="frameShape">
+                                        <enum>QFrame::Box</enum>
+                                    </property>
+                                    <property name="scaledContents">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>在此处显示选定的图像</string>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+
+                    <!-- Right Side: Controls and Results -->
+                    <widget class="QWidget" name="rightPanel">
+                        <layout class="QVBoxLayout" name="rightLayout">
+                            <!-- Model Selection -->
+                            <item>
+                                <widget class="QGroupBox" name="groupModelSelection">
+                                    <property name="title">
+                                        <string>模型选择</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="modelSelectionLayout">
+                                        <item>
+                                            <layout class="QHBoxLayout" name="modelLayout">
+                                                <item>
+                                                    <widget class="QLabel" name="label_weights">
+                                                        <property name="text">
+                                                            <string>pt模型:</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QPushButton" name="btn_select_weights">
+                                                        <property name="text">
+                                                            <string>选择</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QHBoxLayout" name="thresholdLayout">
+                                                <item>
+                                                    <widget class="QLabel" name="label_confidence_threshold">
+                                                        <property name="text">
+                                                            <string>置信度:</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QSlider" name="slider_confidence_threshold">
+                                                        <property name="orientation">
+                                                            <enum>Qt::Horizontal</enum>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <number>100</number>
+                                                        </property>
+                                                        <property name="value">
+                                                            <number>50</number>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QLabel" name="label_threshold_value">
+                                                        <property name="text">
+                                                            <string>0.5</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+
+                            <!-- Image Selection -->
+                            <item>
+                                <widget class="QGroupBox" name="groupFileSelection">
+                                    <property name="title">
+                                        <string>图像选择</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="fileSelectionLayout">
+                                        <item>
+                                            <layout class="QHBoxLayout" name="imageLayout">
+                                                <item>
+                                                    <widget class="QLabel" name="label_image">
+                                                        <property name="text">
+                                                            <string>图片:</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QPushButton" name="btn_select_image">
+                                                        <property name="text">
+                                                            <string>选择</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QPushButton" name="btn_validate_image">
+                                                        <property name="text">
+                                                            <string>识别图片</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+
+                            <!-- Results Display -->
+                            <item>
+                                <widget class="QGroupBox" name="groupResultDisplay">
+                                    <property name="title">
+                                        <string>识别结果</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="resultDisplayLayout">
+                                        <item>
+                                            <widget class="QTextEdit" name="textEdit_results">
+                                                <property name="placeholderText">
+                                                    <string>识别结果将显示在此处...</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                    <stretch>1</stretch> <!-- Left panel has more space -->
+                    <stretch>0</stretch> <!-- Right panel has less space -->
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

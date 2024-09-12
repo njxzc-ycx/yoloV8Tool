@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>AnnotationForm</class>
+    <widget class="QWidget" name="AnnotationForm">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1200</width>
+                <height>800</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Annotation Tool</string>
+        </property>
+        <layout class="QVBoxLayout" name="mainLayout">
+            <item>
+                <widget class="QSplitter" name="splitter">
+                    <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                    </property>
+
+                    <!-- Left Side: Image Display Area -->
+                    <widget class="QWidget" name="leftWidget">
+                        <layout class="QVBoxLayout" name="leftLayout">
+                            <!-- Image Display Area -->
+<!--                            <item>-->
+<!--                                <widget class="QLabel" name="imageLabel">-->
+<!--                                    <property name="alignment">-->
+<!--                                        <set>Qt::AlignCenter</set>-->
+<!--                                    </property>-->
+<!--                                    <property name="frameShape">-->
+<!--                                        <enum>QFrame::StyledPanel</enum>-->
+<!--                                    </property>-->
+<!--                                    <property name="minimumSize">-->
+<!--                                        <size>-->
+<!--                                            <width>800</width>-->
+<!--                                            <height>20</height>-->
+<!--                                        </size>-->
+<!--                                    </property>-->
+<!--                                </widget>-->
+<!--                            </item>-->
+                            <item>
+                                <widget class="QLabel" name="hintLabel">
+                                    <property name="text">
+                                        <string>【←、A键:上一张】【→、D键:下一张】【S键:未标跳转】</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignCenter</set>
+                                    </property>
+
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>800</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                            </item>
+
+                            <!-- Navigation and Action Buttons -->
+                            <item>
+                                <layout class="QHBoxLayout" name="toolbarLayout">
+                                    <item>
+                                        <widget class="QPushButton" name="btn_back">
+                                            <property name="text">
+                                                <string>上一张</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="btn_next">
+                                            <property name="text">
+                                                <string>下一张</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="btn_save">
+                                            <property name="text">
+                                                <string>保存</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                        </layout>
+                    </widget>
+
+                    <!-- Right Side: Project Info and Controls -->
+                    <widget class="QWidget" name="rightWidget">
+                        <layout class="QVBoxLayout" name="rightLayout">
+                            <!-- Project Information -->
+                            <item>
+                                <widget class="QGroupBox" name="groupProjectInfo">
+                                    <property name="title">
+                                        <string>项目信息</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="projectInfoLayout">
+                                        <!-- 项目名称和创建按钮 -->
+                                        <item>
+                                            <layout class="QHBoxLayout" name="projectNameLayout">
+                                                <item>
+                                                    <widget class="QComboBox" name="comboBox_projectName"/>
+                                                </item>
+                                                <item>
+                                                    <widget class="QPushButton" name="btn_createProject">
+                                                        <property name="text">
+                                                            <string>创建</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <!-- 数据显示 -->
+                                        <item>
+                                            <widget class="QLabel" name="label_dataInfo">
+                                                <property name="text">
+                                                    <string>( 共0张，现0/0张，进度0% )</string>
+                                                </property>
+                                                <property name="alignment">
+                                                    <set>Qt::AlignCenter</set>
+                                                </property>
+                                                <property name="styleSheet">
+                                                    <string>color: blue;</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QLabel" name="label_progress">
+                                                <property name="text">
+                                                    <string>进度：</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QProgressBar" name="progressBar"/>
+                                        </item>
+                                        <item>
+                                            <widget class="QPushButton" name="btn_toCoCo">
+                                                <property name="text">
+                                                    <string>转为COCO格式</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+
+                            <!-- Label List -->
+                            <!-- 标签列表 -->
+                            <item>
+                                <widget class="QGroupBox" name="groupLabelList">
+                                    <property name="title">
+                                        <string>标签列表</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="labelListLayout">
+                                        <item>
+                                            <widget class="QTableWidget" name="tableWidget_labels">
+                                                <column>
+                                                    <property name="text">
+                                                        <string>选中</string>
+                                                    </property>
+                                                </column>
+                                                <column>
+                                                    <property name="text">
+                                                        <string>序号</string>
+                                                    </property>
+                                                </column>
+                                                <column>
+                                                    <property name="text">
+                                                        <string>类别名称</string>
+                                                    </property>
+                                                </column>
+                                            </widget>
+                                        </item>
+                                        <!-- 新增类别输入框和按钮 -->
+                                        <item>
+                                            <layout class="QHBoxLayout" name="addCategoryLayout">
+                                                <item>
+                                                    <widget class="QLineEdit" name="lineEdit_labelName">
+                                                        <property name="placeholderText">
+                                                            <string>请输入类别名称</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QPushButton" name="btn_addLabel">
+                                                        <property name="text">
+                                                            <string>添加类别</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+
+
+                            <!-- Action Buttons -->
+                            <item>
+                                <layout class="QHBoxLayout" name="actionButtonLayout">
+                                    <item>
+                                        <widget class="QPushButton" name="btn_open">
+                                            <property name="text">
+                                                <string>打开图库</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="btn_refresh">
+                                            <property name="text">
+                                                <string>刷新</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="btn_skip_to_unlabeled">
+                                            <property name="text">
+                                                <string>未标跳转</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="btn_clear">
+                                            <property name="text">
+                                                <string>清除项目</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                        </layout>
+                    </widget>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

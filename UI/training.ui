@@ -1,0 +1,348 @@
+<ui version="4.0">
+    <class>TrainingForm</class>
+    <widget class="QWidget" name="TrainingForm">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1200</width>
+                <height>800</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Training Form</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_main">
+            <!-- Top Part with Initial and Continue Training -->
+            <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_training_options">
+                    <item>
+                        <widget class="QGroupBox" name="groupBox_initial_training">
+                            <property name="title">
+                                <string>项目选择</string>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_initial_training">
+                                <item>
+                                    <layout class="QHBoxLayout" name="layout_folder_selection">
+                                        <item>
+                                            <widget class="QComboBox" name="comboBox_projectName">
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </item>
+                                <item>
+                                    <widget class="QPushButton" name="btn_project_selection">
+                                        <property name="text">
+                                            <string>确定</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+
+                    <!-- Left side for initial training -->
+                    <item>
+                        <widget class="QGroupBox" name="groupBox_initial_training">
+                            <property name="title">
+                                <string>yoloV8初始训练</string>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_initial_training">
+                                <!-- Dataset Folder Selection -->
+                                <item>
+                                    <layout class="QHBoxLayout" name="layout_folder_selection">
+                                        <item>
+                                            <widget class="QLabel" name="label_datasets_folder">
+                                                <property name="text">
+                                                    <string>数据集文件夹(可自定义)：</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QLineEdit" name="lineEdit_datasets_folder">
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </item>
+
+                                <!-- Model Weight File Selection -->
+                                <item>
+                                    <layout class="QHBoxLayout" name="layout_weight_selection">
+                                        <item>
+                                            <widget class="QLabel" name="label_weight">
+                                                <property name="text">
+                                                    <string>参照模型：</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QComboBox" name="comboBox_model_weight">
+                                            </widget>
+                                        </item>
+
+                                    </layout>
+                                </item>
+
+                                <!-- Start Training Button -->
+                                <item>
+                                    <widget class="QPushButton" name="btn_start_training">
+                                        <property name="text">
+                                            <string>开始训练</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+
+                    <!-- Right side for continue training -->
+                    <item>
+                        <widget class="QGroupBox" name="groupBox_continue_training">
+                            <property name="title">
+                                <string>yoloV8继续训练</string>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_continue_training">
+                                <!-- Select Weights File -->
+                                <item>
+                                    <layout class="QHBoxLayout" name="layout_select_weights">
+                                        <item>
+                                            <widget class="QLabel" name="label_select_weight">
+                                                <property name="text">
+                                                    <string>选择权重文件：</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QComboBox" name="comboBox_select_weights">
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </item>
+
+                                <!-- Buttons -->
+                                <item>
+                                    <layout class="QHBoxLayout" name="layout_buttons">
+                                        <item>
+                                            <widget class="QPushButton" name="btn_continue_training">
+                                                <property name="text">
+                                                    <string>继续训练</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QPushButton" name="btn_extract_model">
+                                                <property name="text">
+                                                    <string>提取模型</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </item>
+
+                                <!-- Notice -->
+                                <item>
+                                    <widget class="QLabel" name="label_notice">
+                                        <property name="text">
+                                            <string>注：V8训练请整全英文路径备份；请注意项目名称及图片名不包含中文字符。
+                                            </string>
+                                        </property>
+                                        <property name="styleSheet">
+                                            <string>color: red;</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+
+            <!-- Middle Part for Training Parameters -->
+            <item>
+                <widget class="QGroupBox" name="groupBox_training_parameters">
+                    <property name="title">
+                        <string>训练参数</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_training_params">
+                        <!-- Training Parameters Example -->
+                        <item row="0" column="0">
+                            <widget class="QLabel" name="label_batch">
+                                <property name="text">
+                                    <string>batch值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="0" column="1">
+                            <widget class="QLineEdit" name="lineEdit_batch">
+                                <property name="text">
+                                    <string>16</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="0" column="2">
+                            <widget class="QLabel" name="label_weight_decay">
+                                <property name="text">
+                                    <string>weight_decay值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="0" column="3">
+                            <widget class="QLineEdit" name="lineEdit_weight_decay">
+                                <property name="text">
+                                    <string>0.0005</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="0" column="4">
+                            <widget class="QLabel" name="label_epoch">
+                                <property name="text">
+                                    <string>训练轮数：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="0" column="5">
+                            <widget class="QLineEdit" name="lineEdit_epoch">
+                                <property name="text">
+                                    <string>50</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <!-- Continue adding other parameters similarly -->
+                        <item row="1" column="0">
+                            <widget class="QLabel" name="label_width">
+                                <property name="text">
+                                    <string>width值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="1" column="1">
+                            <widget class="QLineEdit" name="lineEdit_width">
+                                <property name="text">
+                                    <string>640</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="1" column="2">
+                            <widget class="QLabel" name="label_height">
+                                <property name="text">
+                                    <string>height值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="1" column="3">
+                            <widget class="QLineEdit" name="lineEdit_height">
+                                <property name="text">
+                                    <string>640</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="1" column="4">
+                            <widget class="QLabel" name="label_learning_rate">
+                                <property name="text">
+                                    <string>learning_rate：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="1" column="5">
+                            <widget class="QLineEdit" name="lineEdit_learning_rate">
+                                <property name="text">
+                                    <string>0.001</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="2" column="0">
+                            <widget class="QLabel" name="label_momentum">
+                                <property name="text">
+                                    <string>momentum值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="2" column="1">
+                            <widget class="QLineEdit" name="lineEdit_momentum">
+                                <property name="text">
+                                    <string>0.95</string>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="2" column="2">
+                            <widget class="QLabel" name="label_pretrained">
+                                <property name="text">
+                                    <string>pretrained值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="2" column="3">
+                            <widget class="QCheckBox" name="checkBox_pretrained">
+                                <property name="checked">
+                                    <bool>true</bool>
+                                </property>
+                            </widget>
+                        </item>
+
+                        <item row="2" column="4">
+                            <widget class="QLabel" name="label_augment">
+                                <property name="text">
+                                    <string>augment值：</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item row="2" column="5">
+                            <widget class="QCheckBox" name="checkBox_augment">
+                                <property name="checked">
+                                    <bool>true</bool>
+                                </property>
+                            </widget>
+                        </item>
+
+
+                    </layout>
+                </widget>
+            </item>
+            <!-- Training Log Output -->
+            <item>
+                <widget class="QTextEdit" name="textEdit_training_log">
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                        <string>训练日志输出...</string>
+                    </property>
+                </widget>
+            </item>
+
+            <!-- Bottom Part for Training Explanation -->
+            <item>
+                <widget class="QTextEdit" name="textEdit_training_explanation">
+
+                    <property name="text">
+                        <string>------------------------------------各个参照模型的特点-----------------------------------------
+
+YOLOv8 Nano (YOLOv8n)‌：这是YOLOv8系列中最小的模型，速度最快，适合对推理速度有较高要求的场景，如实时视频流处理。（推荐）
+YOLOv8 Small (YOLOv8s)‌：在保持一定速度的同时，提供了更高的精度，适合对性能有一定要求但资源相对有限的场景。（推荐）
+YOLOv8 Medium (YOLOv8m)‌：在速度和精度之间提供了一个平衡，适合大多数常见的目标检测任务。
+YOLOv8 Large (YOLOv8l)‌：提供更高的精度和更强的性能，适合对精度要求极高的场景，如专业级的图像分析。
+YOLOv8 Extra Large (YOLOv8x)‌：拥有最高的精度和性能，但相应的资源消耗也最大，适合对性能有极致要求的特定应用。
+                        </string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QPushButton" name="btn_clear_runs">
+                    <property name="text">
+                        <string>清空runs文件夹</string>
+                    </property>
+                </widget>
+            </item>
+
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
